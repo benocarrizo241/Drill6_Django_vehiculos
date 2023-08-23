@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+
+{% block nav %}
+<body>
+  <header>
+    <div class="interior"> <!--  este div no estaba -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navegacion"> <!--  navegacion -->
+        <div class="container-fluid">
+          <a class="navbar-brand blanco" href="#">Vehículos</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+              </li>
+              {% if has_add_permission %}
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/vehiculo/add">Agregar</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/vehiculo/listar">Listar</a>
+              </li>
+              
+            </ul>
+            <!-- Nueva sección -->
+            <ul class=" navbar-nav mr-auto">
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/vehiculo/logout"> Salir </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/admin"> Hola {{user.username}} </a>
+              </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item "> 
+                  <a class="nav-link" href="/vehiculo/login"  target="blank"> Login</a> <!-- target="blank" -->
+              </li>
+
+              <li class="nav-item "> 
+                <a class="nav-link" href="/vehiculo/registro"  target="blank"> Registrate </a> <!-- target="blank" -->
+            </li>
+            </ul>
+            
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+</body>
+{% endblock %}

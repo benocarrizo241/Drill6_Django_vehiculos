@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container py-5" id=" vehiculo-list">
+    
+        <section class="table__header">
+            <h1> Listado de Vehículos </h1>
+        </section>
+        <section class="table__body"> <!-- sube y baja de la tabla  -->
+            <table > <!-- class=" table table-hover text-center table-responsive-sm" -->
+                <thead>
+                    <tr>
+                        <th> Marca </th>
+                        <th> Modelo </th>
+                        <th> Serial Carroceria </th>
+                        <th> Serial Motor </th>
+                        <th> Categoria </th>
+                        <th> Precio </th>
+			            <th> Condiciones de Precio </th>
+                    </tr>
+                </thead>
+	        {% if lista_vehiculos %}
+            {% for item in lista_vehiculos %}
+                <tbody>
+                    <tr>
+                        <th>{{item.marca}}</th>
+                	    <td>{{item.modelo}}</td>
+                	    <td>{{item.serial_carroceria}}</td>
+                	    <td>{{item.serial_motor}}</td>
+                	    <td>{{item.categoria}}</td>
+                	    <td>{{item.precio}}</td>
+                	    <td>
+                    		{% if item.precio > 30000 %}
+                        		<p class="status delivered">Alto</p>
+                    		{% elif item.precio > 10000 and item.precio <= 30000 %}
+                        		<p class="status pending">Medio</p>
+                    		{% elif item.precio <= 10000 %}
+                        		<p class="status cancelled">Bajo</p>
+                    		{% else %}
+                        		Valor inválido
+                    		{% endif %}
+                	    </td>
+
+                    </tr>
+                </tbody>
+		    {% endfor %}
+        	{% else %}
+		    <h1> No tengo información de vehículos </h1>
+            {% endif %}
+            </table>
+        </section>
+   
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+user1: admin
+Pass1: admin
+
+user2: Beno
+pass2: Beno12345
+User2 no cuenta con permiso de agregar vehiculo
+
+user3: sebas_tote
+pass3: Seba_tote12345
+User3 si cuenta por permiso para agregar vehiculo
